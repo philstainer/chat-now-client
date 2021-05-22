@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +14,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+::selection {
+  @apply text-gray-50 bg-indigo-500;
+}
+
+html {
+  scroll-behavior: smooth;
+  @apply text-lg;
+}
+
+#root {
+  @apply flex flex-col min-h-screen;
 }

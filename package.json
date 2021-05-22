@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "craco start",
     "prebuild": "rimraf build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build": "craco build",
+    "test": "craco test",
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
-    "schema:download": "npx apollo schema:download --endpoint=http://localhost:4000/graphql graphql-schema.json",
-    "codegen:generate": "npx apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --includes=src/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/types/graphql-global-types.ts types",
-    "generate": "yarn schema:download && yarn codegen:generate"
+    "codegen:endpoint": "npx apollo client:codegen --target typescript --endpoint http://localhost:4000/graphql --outputFlat --includes \"src/**\" --excludes \"src/generated\" src/generated"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
@@ -58,6 +55,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.19",
+    "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -76,10 +74,13 @@
   "devDependencies": {
     "@types/graphql": "^14.5.0",
     "apollo": "^2.33.2",
+    "autoprefixer": "^9",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0"
+    "postcss": "^7",
+    "prettier": "^2.3.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
