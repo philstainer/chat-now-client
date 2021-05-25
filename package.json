@@ -3,65 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "start": "craco start",
     "prebuild": "rimraf build",
     "build": "craco build",
     "test": "craco test",
-    "type-check": "tsc --noEmit",
-    "prepare": "husky install",
+    "test:cov": "yarn test --coverage",
     "codegen:endpoint": "npx apollo client:codegen --target typescript --endpoint http://localhost:4000/graphql --outputFlat --includes \"src/**\" --excludes \"src/generated\" src/generated"
-  },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn eslint --fix",
-      "yarn prettier --write",
-      "yarn jest --bail --findRelatedTests"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "plugins": [
-      "prettier",
-      "simple-import-sort"
-    ],
-    "rules": {
-      "@typescript-eslint/interface-name-prefix": "off",
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-use-before-define": 0,
-      "@typescript-eslint/no-var-requires": 0,
-      "@typescript-eslint/no-unused-vars": [
-        2,
-        {
-          "argsIgnorePattern": "^_"
-        }
-      ],
-      "no-console": [
-        2,
-        {
-          "allow": [
-            "warn",
-            "error"
-          ]
-        }
-      ],
-      "no-undef": "off",
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "prettier/prettier": "error"
-    }
-  },
-  "prettier": {
-    "semi": false,
-    "arrowParens": "avoid",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "printWidth": 80,
-    "bracketSpacing": false
   },
   "browserslist": {
     "production": [
@@ -78,31 +26,34 @@
   "dependencies": {
     "@apollo/client": "^3.3.19",
     "@craco/craco": "^6.1.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@heroicons/react": "^1.0.1",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^13.1.9",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.6.1",
+    "@types/react": "^17.0.7",
+    "@types/react-dom": "^17.0.5",
+    "classnames": "^2.3.1",
     "graphql": "^15.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "rimraf": "^3.0.2",
-    "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "typescript": "^4.2.4",
+    "web-vitals": "^1.1.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.4.1",
     "@types/graphql": "^14.5.0",
-    "apollo": "^2.33.2",
-    "autoprefixer": "^9",
+    "apollo": "^2.33.3",
+    "autoprefixer": "^10.2.5",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "postcss": "^7",
+    "postcss": "^8.3.0",
     "prettier": "^2.3.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "^2.1.2"
   }
 }
