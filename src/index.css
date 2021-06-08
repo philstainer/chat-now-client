@@ -25,6 +25,6 @@ html.dark img {
   @apply filter contrast-75;
 }
 
-#__next {
-  @apply flex flex-col min-h-screen;
+#root {
+  @apply h-screen;
 }

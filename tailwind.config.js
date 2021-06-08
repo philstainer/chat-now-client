@@ -7,14 +7,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...fontFamily.sans],
-      },
-    },
+        sans: ['Inter', ...fontFamily.sans]
+      }
+    }
   },
   variants: {
     extend: {
-      typography: ['dark'],
-    },
+      typography: ['dark']
+    }
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
 }

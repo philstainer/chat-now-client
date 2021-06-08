@@ -4,7 +4,8 @@ import {getMainDefinition} from '@apollo/client/utilities'
 import {GRAPHQL_URI, WS_URI} from 'config/constants'
 
 const httpLink = new HttpLink({
-  uri: GRAPHQL_URI,
+  uri: GRAPHQL_URI as string,
+  credentials: 'include',
 })
 
 const wsLink = new WebSocketLink({
@@ -12,6 +13,9 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true,
     lazy: true,
+    connectionParams: {
+      credentials: 'include',
+    },
   },
 })
 
