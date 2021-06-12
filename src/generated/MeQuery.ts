@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: meQuery
+// GraphQL query operation: MeQuery
 // ====================================================
 
-export interface meQuery_me {
+export interface MeQuery_me {
   __typename: "User";
   /**
    * Id of the user
@@ -31,6 +31,6 @@ export interface meQuery_me {
   image: any | null;
 }
 
-export interface meQuery {
-  me: meQuery_me | null;
+export interface MeQuery {
+  me: MeQuery_me | null;
 }

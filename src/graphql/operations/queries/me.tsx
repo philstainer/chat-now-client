@@ -1,8 +1,8 @@
 import {gql, useQuery} from '@apollo/client'
-import {meQuery} from 'generated/meQuery'
+import {MeQuery} from 'generated/MeQuery'
 
 export const ME = gql`
-  query meQuery {
+  query MeQuery {
     me {
       id
       fullName
@@ -14,9 +14,7 @@ export const ME = gql`
 `
 
 export const useMe = () => {
-  const {data, loading, error} = useQuery<meQuery>(ME, {
-    fetchPolicy: 'network-only',
-  })
+  const {data, loading, error} = useQuery<MeQuery>(ME)
 
-  return {meData: data?.me, meLoading: loading, meError: error}
+  return {me: data?.me, meLoading: loading, meError: error}
 }

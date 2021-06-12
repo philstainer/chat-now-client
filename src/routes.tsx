@@ -1,4 +1,5 @@
 import {useMe} from 'graphql/operations/queries/me'
+import {Chat} from 'pages/Chat'
 import {SignIn} from 'pages/SignIn'
 import {SignUp} from 'pages/SignUp'
 import {Navigate, useRoutes} from 'react-router-dom'
@@ -6,7 +7,7 @@ import {Navigate, useRoutes} from 'react-router-dom'
 const routeConfig = (isLoggedIn: boolean) => [
   {
     path: '/',
-    element: !isLoggedIn ? <Navigate to="/signin" /> : <div>Chat</div>,
+    element: !isLoggedIn ? <Navigate to="/signin" /> : <Chat />,
   },
   {path: '/signup', element: isLoggedIn ? <Navigate to="/" /> : <SignUp />},
   {
@@ -17,9 +18,9 @@ const routeConfig = (isLoggedIn: boolean) => [
 ]
 
 export const Routes = (): any => {
-  const {meData, meLoading} = useMe()
+  const {me, meLoading} = useMe()
 
-  const routes = useRoutes(routeConfig(!!meData))
+  const routes = useRoutes(routeConfig(!!me))
 
   if (meLoading) return null
 
