@@ -1,14 +1,17 @@
 import {UserIcon} from '@heroicons/react/solid'
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
-import {ChatsQuery_chats} from 'generated/ChatsQuery'
+import {ChatsQuery_chats, ChatsQuery_chats_messages} from 'generated/ChatsQuery'
 import {currentChat} from 'graphql/cache'
-import {useMe} from 'graphql/operations/queries/me'
 
-export const Chat = ({id, users, messages}: ChatsQuery_chats): JSX.Element => {
-  const {me} = useMe()
+interface Props extends ChatsQuery_chats {
+  me?: string
+}
 
-  const filteredUsers = users.filter(user => user.id !== me?.id)
-  const lastMessage = messages[messages.length - 1]
+export const Chat = ({id, users, messages, me}: Props): JSX.Element => {
+  const filteredUsers = users.filter(user => user.id !== me)
+  const lastMessage = messages[
+    messages.length - 1
+  ] as ChatsQuery_chats_messages | null
 
   const onClick = () => currentChat(id)
 
@@ -22,12 +25,12 @@ export const Chat = ({id, users, messages}: ChatsQuery_chats): JSX.Element => {
 
       <div className="flex flex-col overflow-hidden space-y-1">
         <div className="flex-1 flex text-gray-700 space-x-2">
-          <div className="truncate">
+          <div className="truncate font-medium">
             {filteredUsers.map(user => user.fullName).join(', ')}
           </div>
 
-          {lastMessage.createdAt && (
-            <div className="flex items-center flex-shrink-0 text-sm">
+          {lastMessage?.createdAt && (
+            <div className="flex items-center flex-shrink-0 text-xs text-gray-500">
               {formatDistanceToNowStrict(new Date(lastMessage.createdAt), {
                 addSuffix: true,
               })}
@@ -35,7 +38,7 @@ export const Chat = ({id, users, messages}: ChatsQuery_chats): JSX.Element => {
           )}
         </div>
 
-        <div className="flex-1 text-sm text-gray-500">{lastMessage.text}</div>
+        <div className="flex-1 text-sm text-gray-500">{lastMessage?.text}</div>
       </div>
     </div>
   )

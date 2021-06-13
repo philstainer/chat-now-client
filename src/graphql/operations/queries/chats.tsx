@@ -28,9 +28,7 @@ export const CHATS = gql`
 `
 
 export const useChats = () => {
-  const {data, loading, error} = useQuery<ChatsQuery>(CHATS, {
-    fetchPolicy: 'network-only',
-  })
+  const {data, loading, error} = useQuery<ChatsQuery>(CHATS)
 
   return {chats: data?.chats, chatsLoading: loading, chatsError: error}
 }

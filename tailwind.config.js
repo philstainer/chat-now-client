@@ -7,14 +7,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...fontFamily.sans]
-      }
-    }
+        sans: ['Inter', ...fontFamily.sans],
+      },
+      maxWidth: {
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+      },
+    },
   },
   variants: {
     extend: {
-      typography: ['dark']
-    }
+      typography: ['dark'],
+    },
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 }
